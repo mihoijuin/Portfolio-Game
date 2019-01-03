@@ -37,6 +37,8 @@
 
 ## ゲーム開発方針
 ### プロト
+- [Unity Test Runner](https://docs.unity3d.com/ja/current/Manual/testing-editortestsrunner.html)を試す
+  - [Unity使いは全員Unity Test Runnerを使え！爆速のトライ＆エラー環境だぞ！ - Qiita](https://qiita.com/su10/items/67a4a90c648b1ef68ab9)
 - 動きだけ再現
 - デザインや演出は無視
 - 探索画面でアイテムをゲット→キャラクター画面の表示が変わる
