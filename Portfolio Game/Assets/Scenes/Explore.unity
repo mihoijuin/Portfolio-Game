@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 107451266}
   - component: {fileID: 107451268}
   - component: {fileID: 107451267}
+  - component: {fileID: 107451269}
   m_Layer: 5
   m_Name: ItemCountText
   m_TagString: Untagged
@@ -188,17 +189,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 107451265}
   m_CullTransparentMesh: 0
---- !u!1 &301112727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1357621625989594, guid: acd743af7f99b4602a8ddd9070563b01,
-    type: 2}
-  m_PrefabInternal: {fileID: 2014372571}
---- !u!114 &301112728
+--- !u!114 &107451269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301112727}
+  m_GameObject: {fileID: 107451265}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f8f9f9467fa44c45a741456286725b7, type: 3}
