@@ -12,8 +12,8 @@ public class ItemDirector : MonoBehaviour {
 
 	void Start ()
     {
-        itemCount = PlayerPrefs.GetInt(itemCountKey, 0);
-        itemCountText = GameObject.Find("ItemCountText").GetComponent<Text>();
+        itemCount = GetItemCount();
+        itemCountText = GetComponent<Text>();
 
         // 取得アイテム数を表示
         itemCountText.text = string.Format("Item：{0}/6", itemCount);
@@ -23,6 +23,12 @@ public class ItemDirector : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    
+    int GetItemCount()
+    {
+        return PlayerPrefs.GetInt(itemCountKey, 0);
+    }
 
     void SaveItemCount()
     {
