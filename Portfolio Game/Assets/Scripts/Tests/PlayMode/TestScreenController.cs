@@ -22,9 +22,13 @@ public class TestScreenController {
             // 1フレーム待機
             yield return null;
 
+            // 違うシーンの場合はシーン遷移
             GoToExprore();
-            // EXPLOREのインデックスは0
-            Assert.That((int)ScreenState, Is.EqualTo(0));
+            Assert.That((int)ScreenState, Is.EqualTo(0));   // EXPLOREのインデックは0
+
+            // 同じシーンの場合はログを吐く
+            LogAssert.Expect(LogType.Log, "Same Scene");
+            GoToExprore();
 
             IsTestFinished = true;
             gameObject.SetActive(false);
@@ -46,10 +50,15 @@ public class TestScreenController {
             // 1フレーム待機
             yield return null;
 
+            // 違うシーンの場合はシーン遷移
             GoToCharactor();
-            // CHARACTORのインデックスは1
-            Assert.That((int)ScreenState, Is.EqualTo(1));
+            Assert.That((int)ScreenState, Is.EqualTo(1));   // CHARACTORのインデックスは1
 
+            // 同じシーンの際はログを吐く
+            LogAssert.Expect(LogType.Log, "Same Scene");
+            GoToCharactor();
+
+            // 終了
             IsTestFinished = true;
             gameObject.SetActive(false);
         }
@@ -57,16 +66,16 @@ public class TestScreenController {
 
 
     /// <summary>
-    /// シーン切り替えテスト
+    /// シーンフラグ切り替えテスト
     /// </summary>
     [UnityTest]
-    public IEnumerator SwitchExploreScreen()
+    public IEnumerator SwitchExploreScreenTest()
     {
         yield return new MonoBehaviourTest<GoToExprore_TestScenario>();
     }
 
     [UnityTest]
-    public IEnumerator SwitchCharactorScreen()
+    public IEnumerator SwitchCharactorScreenTest()
     {
         yield return new MonoBehaviourTest<GoToCharactor_TestScenario>();
     }

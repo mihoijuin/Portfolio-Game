@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 
 public class ScreenController : MonoBehaviour {
 
@@ -31,6 +29,10 @@ public class ScreenController : MonoBehaviour {
             ScreenState = SCREEN.EXPLORE;
             Debug.Log("探索へ");
         }
+        else
+        {
+            Debug.Log("Same Scene");
+        }
     }
 
     public void GoToCharactor()
@@ -40,6 +42,10 @@ public class ScreenController : MonoBehaviour {
         {
             ScreenState = SCREEN.CHARACTOR;
             Debug.Log("キャラクターへ");
+        }
+        else
+        {
+            Debug.Log("Same Scene");
         }
     }
 
