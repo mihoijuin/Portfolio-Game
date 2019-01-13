@@ -235,6 +235,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1357621625989594, guid: acd743af7f99b4602a8ddd9070563b01, type: 2}
+      propertyPath: m_Name
+      value: ScreenManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acd743af7f99b4602a8ddd9070563b01, type: 2}
   m_IsPrefabAsset: 0
@@ -283,7 +287,7 @@ Prefab:
     - target: {fileID: 224970006070573178, guid: 084985b43bd874b81ae8339d68fa04c0,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224970006070573178, guid: 084985b43bd874b81ae8339d68fa04c0,
         type: 2}
@@ -340,11 +344,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122045724}
-    - target: {fileID: 114390214264291660, guid: 084985b43bd874b81ae8339d68fa04c0,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 084985b43bd874b81ae8339d68fa04c0, type: 2}
   m_IsPrefabAsset: 0
@@ -460,7 +459,7 @@ Prefab:
     - target: {fileID: 224378078601861232, guid: dfc2fd81ded4d48ccaa10f3098e259da,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224378078601861232, guid: dfc2fd81ded4d48ccaa10f3098e259da,
         type: 2}
@@ -517,11 +516,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122045724}
-    - target: {fileID: 114378083668272340, guid: dfc2fd81ded4d48ccaa10f3098e259da,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc2fd81ded4d48ccaa10f3098e259da, type: 2}
   m_IsPrefabAsset: 0
@@ -615,8 +609,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1939815532}
   - {fileID: 1007524843}
+  - {fileID: 1939815532}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
