@@ -344,6 +344,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122045724}
+    - target: {fileID: 1715815035326916, guid: 084985b43bd874b81ae8339d68fa04c0, type: 2}
+      propertyPath: m_Name
+      value: ExploreScreenButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 084985b43bd874b81ae8339d68fa04c0, type: 2}
   m_IsPrefabAsset: 0
@@ -516,6 +520,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122045724}
+    - target: {fileID: 1696840183680834, guid: dfc2fd81ded4d48ccaa10f3098e259da, type: 2}
+      propertyPath: m_Name
+      value: CharactorScreenButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc2fd81ded4d48ccaa10f3098e259da, type: 2}
   m_IsPrefabAsset: 0
