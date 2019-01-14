@@ -34,10 +34,16 @@ public class ItemDirector : MonoBehaviour {
 	
 	
 	void Update () {
-		
+        
 	}
 
-    
+    public void UpdateItemLevel()
+    {
+        itemLevel = (ITEM)Enum.ToObject(typeof(ITEM),
+            (int)itemLevel + 1
+        );
+    }
+
     public void LoadItemLevel()
     {
         // 所持アイテムのレベルを取得

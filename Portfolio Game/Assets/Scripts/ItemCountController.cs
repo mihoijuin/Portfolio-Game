@@ -11,18 +11,21 @@ public class ItemCountController : MonoBehaviour {
 
     void Start () {
         itemCountText = GetComponent<Text>();
-
-        // 現在のアイテム状態を取得
-        int maxLevel =  (int)ItemDirector.ITEM.NUM -1;
-        int currentLevel = (int)itemDirector.itemLevel;
-
-        // アイテム状況を表示
-        itemCountText.text = string.Format("{0}/{1}", currentLevel, maxLevel);
-
+        UpdateItemCountText();
 	}
 	
 	
 	void Update () {
 		
 	}
+
+    public void UpdateItemCountText()
+    {
+        // 現在のアイテム状態を取得
+        int maxLevel = (int)ItemDirector.ITEM.NUM - 1;
+        int currentLevel = (int)itemDirector.itemLevel;
+
+        // アイテム状況を表示
+        itemCountText.text = string.Format("{0}/{1}", currentLevel, maxLevel);
+    }
 }
