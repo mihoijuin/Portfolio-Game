@@ -6,9 +6,9 @@ public class ItemDirector : MonoBehaviour {
     // 1つ見つけるごとに見るレベルが上がり情報が増えていく
     public enum ITEM
     {
-        NONE = -1,
+        NONE = 0,
 
-        ITEM0 = 0,
+        ITEM0,
         ITEM1,
         ITEM2,
         ITEM3,
@@ -19,13 +19,17 @@ public class ItemDirector : MonoBehaviour {
     }
 
 
-    private string itemLevelKey = "itemLevel";
+    private readonly string itemLevelKey = "itemLevel";
     public ITEM itemLevel;
 
+    private void OnEnable()
+    {
+        LoadItemLevel();
+    }
 
     void Start ()
     {
-        LoadItemLevel();
+
     }
 	
 	
@@ -34,12 +38,12 @@ public class ItemDirector : MonoBehaviour {
 	}
 
     
-    void LoadItemLevel()
+    public void LoadItemLevel()
     {
         // 所持アイテムのレベルを取得
         // なければNONE
          itemLevel = (ITEM)Enum.ToObject(typeof(ITEM),
-            PlayerPrefs.GetInt(itemLevelKey, -1)
+            PlayerPrefs.GetInt(itemLevelKey, 0)
         );
     }
 
