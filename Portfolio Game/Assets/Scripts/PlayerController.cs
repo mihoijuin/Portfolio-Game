@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D playerRigid;
     Animator playerAnimator;
     public float playerSpeed;
+    Vector3 basePos;
 
     void Start () {
         playerRigid = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+
+        basePos = transform.position;
 
 	}
 
@@ -61,5 +64,13 @@ public class PlayerController : MonoBehaviour {
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.left * playerSpeed);
         playerAnimator.SetTrigger("MoveLeft");
+    }
+
+
+    public void MoveBasePos()
+    {
+        // ふよんとして定位置に戻したい
+        playerRigid.MovePosition(new Vector2(basePos.x, basePos.y));
+
     }
 }
