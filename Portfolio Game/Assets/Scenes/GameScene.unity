@@ -155,6 +155,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ababa69fc5dae440496db427a22f005e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &316717101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114827907073592314, guid: 2bf410741912e43e494e1d3a9f3501c8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1267951426}
+  m_Script: {fileID: 11500000, guid: c505f717a13344b4199e4d4181f06d1a, type: 3}
 --- !u!1001 &357501268
 Prefab:
   m_ObjectHideFlags: 0
@@ -342,6 +348,11 @@ Prefab:
     - target: {fileID: 4882605018852328, guid: 390ba88ab8763408c95d73c303049aa1, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114206964469967284, guid: 390ba88ab8763408c95d73c303049aa1,
+        type: 2}
+      propertyPath: playerSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 390ba88ab8763408c95d73c303049aa1, type: 2}
@@ -658,6 +669,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114827907073592314, guid: 2bf410741912e43e494e1d3a9f3501c8,
+        type: 2}
+      propertyPath: itemDirector
+      value: 
+      objectReference: {fileID: 1681600732}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf410741912e43e494e1d3a9f3501c8, type: 2}
   m_IsPrefabAsset: 0
@@ -675,11 +691,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4734809920152322, guid: 4ffa2624fc0154c078a8106e492296d0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.53
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4734809920152322, guid: 4ffa2624fc0154c078a8106e492296d0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.09
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4734809920152322, guid: 4ffa2624fc0154c078a8106e492296d0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -705,6 +721,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114201347030911608, guid: 4ffa2624fc0154c078a8106e492296d0,
+        type: 2}
+      propertyPath: itemDirector
+      value: 
+      objectReference: {fileID: 1681600732}
+    - target: {fileID: 114201347030911608, guid: 4ffa2624fc0154c078a8106e492296d0,
+        type: 2}
+      propertyPath: itemCountController
+      value: 
+      objectReference: {fileID: 316717101}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffa2624fc0154c078a8106e492296d0, type: 2}
   m_IsPrefabAsset: 0
@@ -775,6 +801,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681600732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114764816991029572, guid: f8a7fdda75313475c8da770e64c2b180,
+    type: 2}
+  m_PrefabInternal: {fileID: 357501268}
+  m_Script: {fileID: 11500000, guid: 5f8f9f9467fa44c45a741456286725b7, type: 3}
 --- !u!1 &1961030528
 GameObject:
   m_ObjectHideFlags: 0
