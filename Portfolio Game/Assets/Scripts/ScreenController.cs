@@ -46,15 +46,18 @@ public class ScreenController : MonoBehaviour {
 
     }
 
-    public void SwitchExploreScreen()
+    public bool IsExplore(){ return ScreenState == SCREEN.EXPLORE && !isMoving; }
+    public bool IsCharactor() { return ScreenState == SCREEN.CHARACTOR && !isMoving; }
+
+    public void SwitchExplore()
     {
 
         // キャラクター画面かつ画面遷移していないときのときのみ遷移できる
-        if (ScreenState == SCREEN.CHARACTOR && !isMoving)
+        if (IsCharactor())
         {
             ScreenState = SCREEN.EXPLORE;
             // 探索画面へ遷移
-            StartCoroutine(MoveToExplore());
+            StartCoroutine(MoveExploreScreen());
                        
         }
        else
@@ -63,7 +66,7 @@ public class ScreenController : MonoBehaviour {
         }
     }
 
-    IEnumerator MoveToExplore()
+    IEnumerator MoveExploreScreen()
     {
          
         float t = 0f;
@@ -84,10 +87,10 @@ public class ScreenController : MonoBehaviour {
         isMoving = false;
     }
 
-    public void SwitchCharactorScreen()
+    public void SwitchCharactor()
     {
         // 探索画面かつ画面遷移していないときのみ遷移できる
-        if(ScreenState == SCREEN.EXPLORE && !isMoving)
+        if(IsExplore())
         {
             ScreenState = SCREEN.CHARACTOR;
 
@@ -96,7 +99,7 @@ public class ScreenController : MonoBehaviour {
 
 
             // キャラクター画面へ遷移
-            StartCoroutine(MoveToCharactor());
+            StartCoroutine(MoveCharactorScreen());
         }
         else
         {
@@ -105,7 +108,7 @@ public class ScreenController : MonoBehaviour {
     }
 
 
-    IEnumerator MoveToCharactor()
+    IEnumerator MoveCharactorScreen()
     {
         
         float t = 0f;

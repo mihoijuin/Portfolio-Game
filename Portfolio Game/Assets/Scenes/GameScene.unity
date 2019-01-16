@@ -165,7 +165,7 @@ Prefab:
     - target: {fileID: 114547355283206520, guid: ababa69fc5dae440496db427a22f005e,
         type: 2}
       propertyPath: screenTransitionSpeed
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114547355283206520, guid: ababa69fc5dae440496db427a22f005e,
         type: 2}
@@ -175,7 +175,7 @@ Prefab:
     - target: {fileID: 114547355283206520, guid: ababa69fc5dae440496db427a22f005e,
         type: 2}
       propertyPath: countSpeed
-      value: 0.015
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 114547355283206520, guid: ababa69fc5dae440496db427a22f005e,
         type: 2}
@@ -394,6 +394,11 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114206964469967284, guid: 390ba88ab8763408c95d73c303049aa1,
+        type: 2}
+      propertyPath: screenController
+      value: 
+      objectReference: {fileID: 1084761216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 390ba88ab8763408c95d73c303049aa1, type: 2}
   m_IsPrefabAsset: 0
@@ -507,7 +512,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchCharactorScreen
+      value: SwitchCharactor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9323fd9feef54d76a61db5dae5ee2eb, type: 2}
@@ -628,7 +633,7 @@ Prefab:
     - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchExploreScreen
+      value: SwitchExplore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8, type: 2}
