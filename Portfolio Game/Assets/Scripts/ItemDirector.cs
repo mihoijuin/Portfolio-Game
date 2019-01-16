@@ -1,38 +1,61 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemDirector : MonoBehaviour {
 
-    private string itemCountKey = "itemCount";
-    private int itemCount;
-    Text itemCountText;
-
-
-	void Start ()
+    // 1つ見つけるごとに見るレベルが上がり情報が増えていく
+    public enum ITEM
     {
-        itemCount = GetItemCount();
-        itemCountText = GetComponent<Text>();
+        NONE = 0,
 
-        // 取得アイテム数を表示
-        itemCountText.text = string.Format("Item：{0}/6", itemCount);
+        ITEM0,
+        ITEM1,
+        ITEM2,
+        ITEM3,
+        ITEM4,
+        ITEM5,
+
+        NUM
+    }
+
+
+    private readonly string itemLevelKey = "itemLevel";
+    public ITEM itemLevel;
+
+    private void OnEnable()
+    {
+        LoadItemLevel();
+    }
+
+    void Start ()
+    {
+
     }
 	
 	
 	void Update () {
-		
+        
 	}
 
-    
-    int GetItemCount()
+    public void UpdateItemLevel()
     {
-        return PlayerPrefs.GetInt(itemCountKey, 0);
+        itemLevel = (ITEM)Enum.ToObject(typeof(ITEM),
+            (int)itemLevel + 1
+        );
     }
 
-    void SaveItemCount()
+    public void LoadItemLevel()
     {
-        PlayerPrefs.SetInt(itemCountKey, itemCount);
+        // 所持アイテムのレベルを取得
+        // なければNONE
+         itemLevel = (ITEM)Enum.ToObject(typeof(ITEM),
+            PlayerPrefs.GetInt(itemLevelKey, 0)
+        );
+    }
+
+    public void SaveItemLevel()
+    {
+        PlayerPrefs.SetInt(itemLevelKey, (int)itemLevel);
         PlayerPrefs.Save();
     }
 }

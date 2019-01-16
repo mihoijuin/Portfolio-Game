@@ -20,7 +20,7 @@ public class ScreenController : MonoBehaviour {
         ScreenState = SCREEN.EXPLORE;
     }
 
-    public void GoToExprore()
+    public void SwitchExploreScreen()
     {
 
         // キャラクター画面のときのみ遷移できる
@@ -35,7 +35,7 @@ public class ScreenController : MonoBehaviour {
         }
     }
 
-    public void GoToCharactor()
+    public void SwitchCharactorScreen()
     {
         // 探索画面のときのみ遷移できる
         if(ScreenState == SCREEN.EXPLORE)

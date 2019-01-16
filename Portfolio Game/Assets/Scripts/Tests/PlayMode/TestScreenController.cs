@@ -5,7 +5,7 @@ using System.Collections;
 
 public class TestScreenController {
 
-    private class GoToExprore_TestScenario : ScreenController, IMonoBehaviourTest
+    private class SwitchExploreScreen_TestScenario : ScreenController, IMonoBehaviourTest
     {
         public bool IsTestFinished { get; private set; }
 
@@ -23,19 +23,19 @@ public class TestScreenController {
             yield return null;
 
             // 違うシーンの場合はシーン遷移
-            GoToExprore();
+            SwitchExploreScreen();
             Assert.That((int)ScreenState, Is.EqualTo(0));   // EXPLOREのインデックは0
 
             // 同じシーンの場合はログを吐く
             LogAssert.Expect(LogType.Log, "Same Scene");
-            GoToExprore();
+            SwitchExploreScreen();
 
             IsTestFinished = true;
             gameObject.SetActive(false);
         }
     }
 
-    private class GoToCharactor_TestScenario : ScreenController, IMonoBehaviourTest
+    private class SwitchCharactorScreen_TestScenario : ScreenController, IMonoBehaviourTest
     {
         public bool IsTestFinished { get; private set; }
 
@@ -51,12 +51,12 @@ public class TestScreenController {
             yield return null;
 
             // 違うシーンの場合はシーン遷移
-            GoToCharactor();
+            SwitchCharactorScreen();
             Assert.That((int)ScreenState, Is.EqualTo(1));   // CHARACTORのインデックスは1
 
             // 同じシーンの際はログを吐く
             LogAssert.Expect(LogType.Log, "Same Scene");
-            GoToCharactor();
+            SwitchCharactorScreen();
 
             // 終了
             IsTestFinished = true;
@@ -71,13 +71,13 @@ public class TestScreenController {
     [UnityTest]
     public IEnumerator SwitchExploreScreenTest()
     {
-        yield return new MonoBehaviourTest<GoToExprore_TestScenario>();
+        yield return new MonoBehaviourTest<SwitchExploreScreen_TestScenario>();
     }
 
     [UnityTest]
     public IEnumerator SwitchCharactorScreenTest()
     {
-        yield return new MonoBehaviourTest<GoToCharactor_TestScenario>();
+        yield return new MonoBehaviourTest<SwitchCharactorScreen_TestScenario>();
     }
 
 
