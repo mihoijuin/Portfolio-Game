@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     Rigidbody2D playerRigid;
+    Animator playerAnimator;
     public float playerSpeed;
 
     void Start () {
         playerRigid = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
 
 	}
 
@@ -39,21 +41,25 @@ public class PlayerController : MonoBehaviour {
     void MoveUp()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.up * playerSpeed);
+        playerAnimator.SetTrigger("MoveUp");
     }
 
     void MoveDown()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.down * playerSpeed);
+        playerAnimator.SetTrigger("MoveDown");
     }
 
 
     void MoveRight()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.right * playerSpeed);
+        playerAnimator.SetTrigger("MoveRight");
     }
 
     void MoveLeft()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.left * playerSpeed);
+        playerAnimator.SetTrigger("MoveLeft");
     }
 }

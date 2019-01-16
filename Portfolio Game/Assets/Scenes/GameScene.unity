@@ -349,10 +349,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114206964469967284, guid: 390ba88ab8763408c95d73c303049aa1,
-        type: 2}
-      propertyPath: playerSpeed
-      value: 0.1
+    - target: {fileID: 4882605018852328, guid: 390ba88ab8763408c95d73c303049aa1, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 390ba88ab8763408c95d73c303049aa1, type: 2}
