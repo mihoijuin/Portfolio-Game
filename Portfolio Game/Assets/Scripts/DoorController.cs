@@ -6,7 +6,7 @@ public class DoorController : MonoBehaviour {
 
     public GameObject charactorScreenButton;
 
-	void Start () {
+    void Start () {
 		
 	}
 	
@@ -25,4 +25,7 @@ public class DoorController : MonoBehaviour {
 
         charactorScreenButton.SetActive(!collision.gameObject.CompareTag("Player"));
     }
+
+
+
 }

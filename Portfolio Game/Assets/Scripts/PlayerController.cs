@@ -84,10 +84,4 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void ZoomIn()
-    {
-
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
-        Camera.main.orthographicSize = 2f;
-    }
 }

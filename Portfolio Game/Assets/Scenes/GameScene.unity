@@ -597,7 +597,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224987064259972450, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -693,11 +693,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1084761216}
+      objectReference: {fileID: 1740091845}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchCharactor
+      value: ZoomIn
       objectReference: {fileID: 0}
     - target: {fileID: 1876954102114536, guid: e9323fd9feef54d76a61db5dae5ee2eb, type: 2}
       propertyPath: m_IsActive
@@ -716,12 +716,37 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Character
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 378656284}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9323fd9feef54d76a61db5dae5ee2eb, type: 2}
@@ -1201,6 +1226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charactorScreenButton: {fileID: 378656284}
+  zoomSpeed: 0.5
 --- !u!1001 &1496380993
 Prefab:
   m_ObjectHideFlags: 0
