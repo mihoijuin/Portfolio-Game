@@ -34,8 +34,29 @@ public class ItemDirector : MonoBehaviour {
 	
 	
 	void Update () {
-        
+        ShowAcquiredItems();
 	}
+
+
+    void ShowAcquiredItems()
+    {
+        switch (itemLevel)
+        {
+            case ITEM.NONE:
+                Debug.Log("none");
+                break;
+            case ITEM.ITEM0:
+                Debug.Log("1");
+                break;
+            case ITEM.ITEM1:
+                Debug.Log("2");
+                break;
+            case ITEM.ITEM2:
+                Debug.Log("3");
+                break;
+
+        }
+    }
 
     public void UpdateItemLevel()
     {
