@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour {
     public IEnumerator ZoomIn()
     {
 
-        while (true)
+        while (Camera.main.orthographicSize > zoomSize + 0.01f)
         {
             // カメラをドアの位置に移動
             float targetPosx = Mathf.SmoothStep(transform.position.x, door.transform.position.x - zoomOffset, zoomSpeed);
@@ -41,6 +41,8 @@ public class CameraController : MonoBehaviour {
 
             yield return new WaitForSeconds(zoomInterval);
         }
+
+        door.GetComponent<Animator>().SetTrigger("Open");
 
     }
 
