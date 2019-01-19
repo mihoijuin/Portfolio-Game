@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void MoveRight()
+    public void MoveRight()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.right * playerSpeed);
         playerAnimator.SetTrigger("MoveRight");

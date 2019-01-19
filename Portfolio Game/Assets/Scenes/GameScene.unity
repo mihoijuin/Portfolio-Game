@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -477,6 +478,23 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84f03ccfb4fe4f2ab129024d7543f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1457532166}
+  player: {fileID: 836431639}
+  zoomInterval: 0.01
+  zoomSpeed: 0.15
+  zoomSize: 1.5
+  zoomOffset: 0.8
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -587,6 +605,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4734809920152322, guid: 4ffa2624fc0154c078a8106e492296d0,
     type: 2}
   m_PrefabInternal: {fileID: 1343795215}
+--- !u!1 &836431639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1575138113743838, guid: 390ba88ab8763408c95d73c303049aa1,
+    type: 2}
+  m_PrefabInternal: {fileID: 621441731}
 --- !u!1001 &1039763609
 Prefab:
   m_ObjectHideFlags: 0
@@ -597,7 +620,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224987064259972450, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -693,11 +716,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1740091845}
+      objectReference: {fileID: 519420030}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ZoomIn
+      value: ZoomInBeforeCharacterScreenTransition
       objectReference: {fileID: 0}
     - target: {fileID: 1876954102114536, guid: e9323fd9feef54d76a61db5dae5ee2eb, type: 2}
       propertyPath: m_IsActive
@@ -746,6 +769,31 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1084761216}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SwitchCharactor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -900,7 +948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1254045001
 Transform:
   m_ObjectHideFlags: 0
@@ -908,7 +956,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1254045000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1849891654}
@@ -1123,6 +1171,7 @@ GameObject:
   - component: {fileID: 1457532168}
   - component: {fileID: 1457532169}
   - component: {fileID: 1457532170}
+  - component: {fileID: 1457532171}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1226,7 +1275,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charactorScreenButton: {fileID: 378656284}
-  zoomSpeed: 0.5
+--- !u!95 &1457532171
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457532166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04347da5375624e059a2bd5bd44562ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1496380993
 Prefab:
   m_ObjectHideFlags: 0
