@@ -98,9 +98,6 @@ public class ScreenController : MonoBehaviour {
             // 移動キャラが右端まで移動
             playerController.MoveBasePos();
 
-
-            // キャラクター画面へ遷移
-            //StartCoroutine(MoveCharactorScreen());
         }
         else
         {
@@ -109,26 +106,5 @@ public class ScreenController : MonoBehaviour {
     }
 
 
-    //IEnumerator MoveCharactorScreen()
-    //{
-        
-    //    float t = 0f;
-    //    isMoving = true;
-
-    //    while (charactorScreen.transform.position.x - defaultExploreScreenPos.x > Mathf.Epsilon)
-    //    {
-    //        // 移動          
-    //        charactorScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
-    //        exploreScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
-
-    //        // カウントを足す
-    //        t += countSpeed;
-
-    //        yield return new WaitForSeconds(0.01f);
-    //    }
-
-    //    isMoving = false;
-
-    //}
 
 }
