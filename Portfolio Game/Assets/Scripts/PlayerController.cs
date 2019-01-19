@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+
     private void FixedUpdate()
     {
         // 探索画面の時のみ移動可能
@@ -81,5 +82,12 @@ public class PlayerController : MonoBehaviour {
         // ふよんとして定位置に戻したい
         transform.position = new Vector2(basePos.x, basePos.y);
 
+    }
+
+    void ZoomIn()
+    {
+
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+        Camera.main.orthographicSize = 2f;
     }
 }

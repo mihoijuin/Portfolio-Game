@@ -57,7 +57,7 @@ public class ScreenController : MonoBehaviour {
         {
             ScreenState = SCREEN.EXPLORE;
             // 探索画面へ遷移
-            StartCoroutine(MoveExploreScreen());
+            //StartCoroutine(MoveExploreScreen());
                        
         }
        else
@@ -66,26 +66,27 @@ public class ScreenController : MonoBehaviour {
         }
     }
 
-    IEnumerator MoveExploreScreen()
-    {
-         
-        float t = 0f;
-        isMoving = true;
 
-        while (defaultCharaScreenPos.x - charactorScreen.transform.position.x > Mathf.Epsilon)
-        {
-            // 移動          
-            charactorScreen.transform.Translate(ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
-            exploreScreen.transform.Translate(ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
+    //IEnumerator MoveExploreScreen()
+    //{
 
-            // カウントを足す
-            t += countSpeed;
+    //    float t = 0f;
+    //    isMoving = true;
 
-            yield return new WaitForSeconds(0.01f);
-        }
+    //    while (defaultCharaScreenPos.x - charactorScreen.transform.position.x > Mathf.Epsilon)
+    //    {
+    //        // 移動          
+    //        charactorScreen.transform.Translate(ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
+    //        exploreScreen.transform.Translate(ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
 
-        isMoving = false;
-    }
+    //        // カウントを足す
+    //        t += countSpeed;
+
+    //        yield return new WaitForSeconds(0.01f);
+    //    }
+
+    //    isMoving = false;
+    //}
 
     public void SwitchCharactor()
     {
@@ -99,7 +100,7 @@ public class ScreenController : MonoBehaviour {
 
 
             // キャラクター画面へ遷移
-            StartCoroutine(MoveCharactorScreen());
+            //StartCoroutine(MoveCharactorScreen());
         }
         else
         {
@@ -108,26 +109,26 @@ public class ScreenController : MonoBehaviour {
     }
 
 
-    IEnumerator MoveCharactorScreen()
-    {
+    //IEnumerator MoveCharactorScreen()
+    //{
         
-        float t = 0f;
-        isMoving = true;
+    //    float t = 0f;
+    //    isMoving = true;
 
-        while (charactorScreen.transform.position.x - defaultExploreScreenPos.x > Mathf.Epsilon)
-        {
-            // 移動          
-            charactorScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
-            exploreScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
+    //    while (charactorScreen.transform.position.x - defaultExploreScreenPos.x > Mathf.Epsilon)
+    //    {
+    //        // 移動          
+    //        charactorScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
+    //        exploreScreen.transform.Translate(-ease.EaseOutCubic(t) * screenTransitionSpeed, 0, 0);
 
-            // カウントを足す
-            t += countSpeed;
+    //        // カウントを足す
+    //        t += countSpeed;
 
-            yield return new WaitForSeconds(0.01f);
-        }
+    //        yield return new WaitForSeconds(0.01f);
+    //    }
 
-        isMoving = false;
+    //    isMoving = false;
 
-    }
+    //}
 
 }
