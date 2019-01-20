@@ -56,8 +56,24 @@ public class ScreenController : MonoBehaviour {
         if (IsCharactor())
         {
             ScreenState = SCREEN.EXPLORE;
-            // 探索画面へ遷移
-                       
+
+            // オーバーレイを表示
+            overlay.transform.localScale = new Vector3(overlay.transform.localScale.x, 2f, overlay.transform.localScale.z);
+
+            // キャラ画面を非表示
+            charactorScreen.SetActive(false);
+
+            // 探索を表示
+            exploreScreen.SetActive(true);
+
+            // 探索画面をセットアップ
+            door.GetComponent<Animator>().SetTrigger("Close");
+            player.GetComponent<Rigidbody2D>().isKinematic = false;
+            player.GetComponent<PlayerController>().MoveBasePos();
+
+            // オーバーレイを非表示
+            overlay.SetActive(false);
+
         }
        else
         {
@@ -105,9 +121,9 @@ public class ScreenController : MonoBehaviour {
         }
 
         // ドアを開く動き
-        door.GetComponent<Animator>().SetTrigger("Open");
-        player.GetComponent<Rigidbody2D>().isKinematic = true;
+        door.GetComponent<Animator>().SetTrigger("Open");   // TODO 2回目以降のときにうまく動作しない
         player.transform.Translate(1.5f, 0, 0);
+        player.GetComponent<Rigidbody2D>().isKinematic = true;
 
         // 画面切り替え用のオーバーレイを出現
         yield return new WaitForSeconds(0.5f);
@@ -122,7 +138,7 @@ public class ScreenController : MonoBehaviour {
         charactorScreen.SetActive(true);
 
         // オーバレイを消す
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         while(overlay.transform.localScale.y > 0f)
         {
             float targetScaleY = Mathf.SmoothStep(overlay.transform.localScale.y, 0f, scaleSpeed);
@@ -130,7 +146,7 @@ public class ScreenController : MonoBehaviour {
             yield return new WaitForSeconds(scaleInterval);
         }
 
-
+        yield break;
     }
 
 

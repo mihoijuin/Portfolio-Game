@@ -11,7 +11,6 @@ public class DoorController : MonoBehaviour {
 	}
 	
 	void Update () {
-		
 	}
 
 

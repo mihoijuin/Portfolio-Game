@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         playerAnimator.SetTrigger("MoveRight");
     }
 
-    void MoveLeft()
+    public void MoveLeft()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.left * playerSpeed);
         playerAnimator.SetTrigger("MoveLeft");
