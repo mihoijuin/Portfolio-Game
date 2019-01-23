@@ -46,6 +46,8 @@ public class ScreenController : MonoBehaviour {
         cameraOriginSize = Camera.main.orthographicSize;
     }
 
+
+
     public bool IsExplore(){ return ScreenState == SCREEN.EXPLORE; }
     public bool IsCharactor() { return ScreenState == SCREEN.CHARACTOR; }
 

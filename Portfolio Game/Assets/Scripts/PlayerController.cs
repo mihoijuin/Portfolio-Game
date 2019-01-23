@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviour {
     Vector3 basePos;
 
     // スクリーン
-    public ScreenController screenController;
+    ScreenController screenController;
 
     void Start () {
         playerRigid = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        screenController = FindObjectOfType<ScreenController>();
 
         basePos = transform.position;
 
