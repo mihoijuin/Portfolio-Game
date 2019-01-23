@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour {
 
-    public ItemDirector itemDirector;
-    public ItemCountController itemCountController;
+    ItemDirector itemDirector;
+    ItemCountController itemCountController;
 
     bool collidedByPlayer = false;
 
 	void Start () {
-		
+        itemDirector = FindObjectOfType<ItemDirector>();
+        itemCountController = FindObjectOfType<ItemCountController>();
 	}
 	
 	
