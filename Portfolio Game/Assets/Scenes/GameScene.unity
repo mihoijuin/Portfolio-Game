@@ -653,7 +653,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224987064259972450, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -749,11 +749,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1084761216}
+      objectReference: {fileID: 378656284}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RunSwitchCharactorTask
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1876954102114536, guid: e9323fd9feef54d76a61db5dae5ee2eb, type: 2}
       propertyPath: m_IsActive
@@ -762,7 +762,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -782,7 +782,7 @@ Prefab:
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -793,11 +793,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 378656284}
+      objectReference: {fileID: 1084761216}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: SwitchCharactor
       objectReference: {fileID: 0}
     - target: {fileID: 114509996410149480, guid: e9323fd9feef54d76a61db5dae5ee2eb,
         type: 2}
@@ -1539,6 +1539,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exploreScreenButton: {fileID: 1392998042}
+  jumpHeight: 0.8
+  jumpSpeed: 0.5
+  jumpInterval: 0.01
 --- !u!58 &1849891657
 CircleCollider2D:
   m_ObjectHideFlags: 0

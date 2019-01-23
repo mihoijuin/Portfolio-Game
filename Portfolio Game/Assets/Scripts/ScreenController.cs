@@ -62,11 +62,8 @@ public class ScreenController : MonoBehaviour {
             // オーバーレイを表示
             overlay.transform.localScale = new Vector3(overlay.transform.localScale.x, 2f, overlay.transform.localScale.z);
 
-            // キャラ画面を非表示
-            charactorScreen.SetActive(false);
-
-            // 探索を表示
-            exploreScreen.SetActive(true);
+            // 画面を切り替え
+            SwitchActiveScreen();
 
             // 探索画面をセットアップ
             door.GetComponent<Animator>().SetTrigger("Close");
@@ -94,7 +91,7 @@ public class ScreenController : MonoBehaviour {
             ScreenState = SCREEN.CHARACTOR;
 
             // 画面遷移前の動き
-            StartCoroutine(ExecuteEffectesBeforeCharacterScreenTransition());
+            StartCoroutine(ExecuteEffectesForTransitionToCharactor());
 
 
         }
@@ -105,9 +102,34 @@ public class ScreenController : MonoBehaviour {
     }
 
 
-    private IEnumerator ExecuteEffectesBeforeCharacterScreenTransition()
+    private IEnumerator ExecuteEffectesForTransitionToCharactor()
     {
+        // カメラをズームイン
+        StartCoroutine(ZoomIn());
+        yield return new WaitWhile(() => Camera.main.orthographicSize > zoomSize + 0.01f);
 
+        // ドアを開く動き
+        OpenDoor();
+        yield return new WaitForSeconds(0.5f);
+
+        // 画面切り替え用のオーバーレイを出現
+        overlay.SetActive(true);
+
+        // カメラを元に戻す
+        InitCamera();
+
+        // 画面を切り替え
+        SwitchActiveScreen();
+        yield return new WaitForSeconds(1.5f);
+
+        // オーバレイを消す
+        StartCoroutine(ShrinkOverlay());
+
+        yield break;
+    }
+
+    private IEnumerator ZoomIn()
+    {
         while (Camera.main.orthographicSize > zoomSize + 0.01f)
         {
             // カメラをドアの位置に移動
@@ -122,26 +144,13 @@ public class ScreenController : MonoBehaviour {
             yield return new WaitForSeconds(zoomInterval);
         }
 
-        // ドアを開く動き
-        door.GetComponent<Animator>().SetTrigger("Open");   // TODO 2回目以降のときにうまく動作しない
-        player.transform.Translate(1.5f, 0, 0);
-        player.GetComponent<Rigidbody2D>().isKinematic = true;
+        yield break;
+    }
 
-        // 画面切り替え用のオーバーレイを出現
-        yield return new WaitForSeconds(0.5f);
-        overlay.SetActive(true);
 
-        // カメラを元に戻す
-        Camera.main.transform.position = cameraOriginPos;
-        Camera.main.orthographicSize = cameraOriginSize;
-
-        // 画面を切り替え
-        exploreScreen.SetActive(false);
-        charactorScreen.SetActive(true);
-
-        // オーバレイを消す
-        yield return new WaitForSeconds(1.5f);
-        while(overlay.transform.localScale.y > 0f)
+    IEnumerator ShrinkOverlay()
+    {
+        while (overlay.transform.localScale.y > 0f)
         {
             float targetScaleY = Mathf.SmoothStep(overlay.transform.localScale.y, 0f, scaleSpeed);
             overlay.transform.localScale = new Vector3(overlay.transform.localScale.x, targetScaleY, overlay.transform.localScale.z);
@@ -152,5 +161,31 @@ public class ScreenController : MonoBehaviour {
     }
 
 
+    void OpenDoor()
+    {
+        door.GetComponent<Animator>().SetTrigger("Open");   // TODO 2回目以降のときにうまく動作しない
+        player.transform.Translate(1.5f, 0, 0);
+        player.GetComponent<Rigidbody2D>().isKinematic = true;
+    }
+
+    void InitCamera()
+    {
+        Camera.main.transform.position = cameraOriginPos;
+        Camera.main.orthographicSize = cameraOriginSize;
+    }
+
+    void SwitchActiveScreen()
+    {
+        if(ScreenState == SCREEN.CHARACTOR)
+        {
+            exploreScreen.SetActive(false);
+            charactorScreen.SetActive(true);
+        }
+        else
+        {
+            exploreScreen.SetActive(true);
+            charactorScreen.SetActive(false);
+        }
+    }
 
 }
