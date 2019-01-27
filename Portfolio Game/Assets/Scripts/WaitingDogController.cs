@@ -10,6 +10,9 @@ public class WaitingDogController : MonoBehaviour {
     public float jumpSpeed;
     public float jumpInterval;
 
+    public bool isJumping;
+
+
     private void OnMouseDown()
     {
         exploreScreenButton.SetActive(true);
@@ -17,9 +20,12 @@ public class WaitingDogController : MonoBehaviour {
 
     public IEnumerator Jump()
     {
-        float height = 0f;
-        Vector3 originPos = transform.position;
+        isJumping = true;
 
+        float height = 0f;
+        Vector3 originPos =　transform.position;
+
+        // 上がる
         while(transform.position.y < originPos.y + jumpHeight)
         {
             height = Mathf.SmoothStep(0f, jumpHeight, jumpSpeed);
@@ -28,14 +34,19 @@ public class WaitingDogController : MonoBehaviour {
 
         }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(jumpInterval);
 
+        // 下がる
         while(transform.position.y > originPos.y)
         {
             height = Mathf.SmoothStep(0f, jumpHeight, jumpSpeed);
             transform.Translate(0, -height, 0);
             yield return new WaitForSeconds(jumpInterval);
         }
+
+        isJumping = false;
+
+        yield break;
 
     }
 }

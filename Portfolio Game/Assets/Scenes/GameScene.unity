@@ -234,6 +234,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1575138113743838, guid: 390ba88ab8763408c95d73c303049aa1,
         type: 2}
+    - target: {fileID: 114547355283206520, guid: ababa69fc5dae440496db427a22f005e,
+        type: 2}
+      propertyPath: waitingDogController
+      value: 
+      objectReference: {fileID: 1849891656}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ababa69fc5dae440496db427a22f005e, type: 2}
   m_IsPrefabAsset: 0
@@ -858,7 +863,7 @@ Prefab:
     - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224492206811760602, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
         type: 2}
@@ -1013,6 +1018,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602202980069232, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df0d8f0b14d54f4ba7fe97804cc6da8, type: 2}
@@ -1551,7 +1576,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

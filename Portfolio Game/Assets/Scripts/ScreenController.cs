@@ -15,28 +15,26 @@ public class ScreenController : MonoBehaviour {
 
     public SCREEN ScreenState { get; set; } = SCREEN.NONE;
 
-    // キャラクター画面
+    // 画面
     public GameObject charactorScreen;
-
-    // 探索画面
     public GameObject exploreScreen;
 
     public GameObject overlay;
-
-    // プレイヤー
     public GameObject door;
     public GameObject player;
 
+    // カメラズーム用
     public float zoomInterval;
     public float zoomSpeed;
     public float zoomSize;
-
     public float scaleSpeed;
     public float scaleInterval;
 
-    // カメラ
+    // カメラ初期値
     Vector3 cameraOriginPos;
     float cameraOriginSize;
+
+    WaitingDogController waitingDogController;
 
 
     private void Start()
@@ -47,39 +45,63 @@ public class ScreenController : MonoBehaviour {
     }
 
 
-
     public bool IsExplore(){ return ScreenState == SCREEN.EXPLORE; }
     public bool IsCharactor() { return ScreenState == SCREEN.CHARACTOR; }
+
 
     public void SwitchExplore()
     {
 
-        // キャラクター画面かつ画面遷移していないときのときのみ遷移できる
+        // キャラクター画面のときのみ遷移できる
         if (IsCharactor())
         {
             ScreenState = SCREEN.EXPLORE;
 
-            // オーバーレイを表示
-            overlay.transform.localScale = new Vector3(overlay.transform.localScale.x, 2f, overlay.transform.localScale.z);
+            StartCoroutine(ExecuteEffectesForTransitionToExplore());
 
-            // 画面を切り替え
-            SwitchActiveScreen();
-
-            // 探索画面をセットアップ
-            door.GetComponent<Animator>().SetTrigger("Close");
-            player.GetComponent<Rigidbody2D>().isKinematic = false;
-            player.GetComponent<PlayerController>().MoveBasePos();
-
-            // オーバーレイを非表示
-            overlay.SetActive(false);
 
         }
-       else
+        else
         {
             Debug.Log("Same Scene");
         }
     }
 
+    private IEnumerator ExecuteEffectesForTransitionToExplore()
+    {
+
+        // わんこがジャンプ
+        waitingDogController = FindObjectOfType<WaitingDogController>();    // 初期は非アクティブなのでここで取得
+        StartCoroutine(waitingDogController.Jump());
+
+        yield return new WaitWhile(() => waitingDogController.isJumping);
+        yield return new WaitForSeconds(0.1f);
+
+
+        // オーバーレイを表示
+        InitOverray();
+
+        // 画面を切り替え
+        SwitchActiveScreen();
+
+        // 探索画面を初期化
+        InitExploreScreen();
+
+        yield return new WaitForSeconds(1.5f);
+
+        // オーバーレイを非表示
+        StartCoroutine(ShrinkOverlay());
+
+        yield break;
+    }
+
+
+    void InitExploreScreen()
+    {
+        door.GetComponent<Animator>().SetTrigger("Close");
+        player.GetComponent<Rigidbody2D>().isKinematic = false;
+        player.GetComponent<PlayerController>().MoveBasePos();
+    }
 
 
     public void SwitchCharactor()
@@ -87,12 +109,10 @@ public class ScreenController : MonoBehaviour {
         // 探索画面かつ画面遷移していないときのみ遷移できる
         if(IsExplore())
         {
-
             ScreenState = SCREEN.CHARACTOR;
 
             // 画面遷移前の動き
             StartCoroutine(ExecuteEffectesForTransitionToCharactor());
-
 
         }
         else
@@ -113,7 +133,7 @@ public class ScreenController : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 
         // 画面切り替え用のオーバーレイを出現
-        overlay.SetActive(true);
+        InitOverray();
 
         // カメラを元に戻す
         InitCamera();
@@ -147,15 +167,22 @@ public class ScreenController : MonoBehaviour {
         yield break;
     }
 
-
-    IEnumerator ShrinkOverlay()
+    void InitOverray()
     {
-        while (overlay.transform.localScale.y > 0f)
+        overlay.SetActive(true);
+        overlay.transform.localScale = new Vector3(2f, 2f, 1f);
+    }
+
+    private IEnumerator ShrinkOverlay()
+    {
+        while (overlay.transform.localScale.y > 0.01f)
         {
             float targetScaleY = Mathf.SmoothStep(overlay.transform.localScale.y, 0f, scaleSpeed);
             overlay.transform.localScale = new Vector3(overlay.transform.localScale.x, targetScaleY, overlay.transform.localScale.z);
             yield return new WaitForSeconds(scaleInterval);
         }
+
+        overlay.SetActive(false);
 
         yield break;
     }
