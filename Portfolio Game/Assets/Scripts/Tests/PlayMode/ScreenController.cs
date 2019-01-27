@@ -14,10 +14,22 @@ public class ScreenController : MonoBehaviour {
 
     public SCREEN ScreenState { get; set; } = SCREEN.NONE;
 
+    // キャラクター画面
+    public GameObject charactorScreen;
+    Vector3 defaultCharaScreenPos;
+
+    // 探索画面
+    public GameObject exploreScreen;
+
 
     private void Start()
     {
         ScreenState = SCREEN.EXPLORE;
+
+        // キャラクター画面の待機位置
+        defaultCharaScreenPos = charactorScreen.transform.position;
+        
+
     }
 
     public void SwitchExploreScreen()
@@ -27,7 +39,17 @@ public class ScreenController : MonoBehaviour {
         if(ScreenState == SCREEN.CHARACTOR)
         {
             ScreenState = SCREEN.EXPLORE;
-            Debug.Log("探索へ");
+            // TODO 移動キャラが左向きで待機
+
+
+            // 探索画面へ遷移
+            do
+            {
+                charactorScreen.transform.Translate(defaultCharaScreenPos.x, 0, 0);
+                exploreScreen.transform.Translate(defaultCharaScreenPos.x, 0, 0);
+
+            } while (charactorScreen.transform.position.x > 0);
+
         }
         else
         {
@@ -41,7 +63,11 @@ public class ScreenController : MonoBehaviour {
         if(ScreenState == SCREEN.EXPLORE)
         {
             ScreenState = SCREEN.CHARACTOR;
-            Debug.Log("キャラクターへ");
+            // TODO 移動キャラが右端まで移動
+
+            // キャラクター画面へ遷移
+            charactorScreen.transform.Translate(-defaultCharaScreenPos.x, 0, 0);
+            exploreScreen.transform.Translate(-defaultCharaScreenPos.x, 0, 0);
         }
         else
         {

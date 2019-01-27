@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: object1
+    uniqueID: 1219185483
+    locked: 0
+  - name: object0
+    uniqueID: 16984867
+    locked: 0
+  - name: overlay
+    uniqueID: 1211017015
+    locked: 0

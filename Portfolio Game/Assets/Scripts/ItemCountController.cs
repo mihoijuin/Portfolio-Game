@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class ItemCountController : MonoBehaviour {
 
     Text itemCountText;
-    public ItemDirector itemDirector;
+    ItemDirector itemDirector;
 
     void Start () {
         itemCountText = GetComponent<Text>();
+        itemDirector = FindObjectOfType<ItemDirector>();
+
         UpdateItemCountText();
 	}
 	
