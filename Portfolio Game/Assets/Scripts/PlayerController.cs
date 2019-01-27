@@ -9,35 +9,46 @@ public class PlayerController : MonoBehaviour {
     public float playerSpeed;
     Vector3 basePos;
 
+    // スクリーン
+    ScreenController screenController;
+
     void Start () {
         playerRigid = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        screenController = FindObjectOfType<ScreenController>();
 
         basePos = transform.position;
 
 	}
 
+
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        // 探索画面の時のみ移動可能
+        if (screenController.IsExplore())
         {
-            MoveUp();
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                MoveUp();
+            }
+            
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                MoveDown();
+            }
+            
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                MoveRight();
+            }
+            
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                MoveLeft();
+            }
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            MoveDown();
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-        }
     }
 
 
@@ -54,13 +65,13 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void MoveRight()
+    public void MoveRight()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.right * playerSpeed);
         playerAnimator.SetTrigger("MoveRight");
     }
 
-    void MoveLeft()
+    public void MoveLeft()
     {
         playerRigid.MovePosition(playerRigid.position + Vector2.left * playerSpeed);
         playerAnimator.SetTrigger("MoveLeft");
@@ -70,7 +81,8 @@ public class PlayerController : MonoBehaviour {
     public void MoveBasePos()
     {
         // ふよんとして定位置に戻したい
-        playerRigid.MovePosition(new Vector2(basePos.x, basePos.y));
+        transform.position = new Vector2(basePos.x, basePos.y);
 
     }
+
 }
