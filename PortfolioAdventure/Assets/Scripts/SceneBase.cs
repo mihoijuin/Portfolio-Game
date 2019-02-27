@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneBase : MonoBehaviour
 {
@@ -28,9 +30,9 @@ public class SceneBase : MonoBehaviour
     [SerializeField]
     GameObject debugCanvas = null;
 
-    private bool isInitialized = false;
+    private static bool isInitialized = false;
 
-    public static SCENARIO currentScinario{ get; set; }
+    public static SCENARIO currentScinario{ get; private set; }
 
     protected virtual void Awake(){
         if(!isInitialized){
@@ -39,4 +41,10 @@ public class SceneBase : MonoBehaviour
             isInitialized = true;
         }
     }
+
+    public static void LoadScenario(string scene, string scenario){
+        currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), scenario);
+        SceneManager.LoadScene(scene);
+    }
+
 }
