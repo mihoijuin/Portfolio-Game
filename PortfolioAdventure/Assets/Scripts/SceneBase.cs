@@ -10,7 +10,8 @@ public class SceneBase : MonoBehaviour
     public enum SCENE {
         NONE = -1,
 
-        探索 = 0,
+        スタート = 0,
+        探索,
         PORINのいる場所,
 
         NUM
