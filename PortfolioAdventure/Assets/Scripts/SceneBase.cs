@@ -26,7 +26,7 @@ public class SceneBase : MonoBehaviour
     }
 
     [SerializeField]
-    GameObject debugCanvas;
+    GameObject debugCanvas = null;
 
     private bool isInitialized = false;
 
