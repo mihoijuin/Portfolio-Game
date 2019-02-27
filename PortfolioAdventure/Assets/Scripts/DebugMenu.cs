@@ -56,7 +56,9 @@ public class DebugMenu : MonoBehaviour
 
     private void UpdateConfirmButton(){
         confirmButton.onClick.RemoveAllListeners();
-        confirmButton.onClick.AddListener(() => SceneBase.LoadScenario(m_Dropdowns[0].captionText.text, m_Dropdowns[1].captionText.text));
+        SceneBase.SCENE scene = (SceneBase.SCENE)Enum.Parse(typeof(SceneBase.SCENE), m_Dropdowns[0].captionText.text);
+        SceneBase.SCENARIO scenario = (SceneBase.SCENARIO)Enum.Parse(typeof(SceneBase.SCENARIO), m_Dropdowns[1].captionText.text);
+        confirmButton.onClick.AddListener(() => SceneBase.LoadScenario(scene, scenario));
         confirmButton.onClick.AddListener(() => Debug.Log("[Debug Menu]シーン：" + m_Dropdowns[0].captionText.text + "、シナリオ：" + m_Dropdowns[1].captionText.text));
         confirmButton.onClick.AddListener(() => transform.Find("Scroll View/").gameObject.SetActive(false));
     }

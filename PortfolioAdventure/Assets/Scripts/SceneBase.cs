@@ -49,9 +49,9 @@ public class SceneBase : MonoBehaviour
         }
     }
 
-    public static void LoadScenario(string scene, string scenario){
-        ChangeScenario((SCENARIO)Enum.Parse(typeof(SCENARIO), scenario));
-        SceneManager.LoadScene(scene);
+    public static void LoadScenario(SCENE scene, SCENARIO scenario){
+        ChangeScenario(scenario);
+        SceneManager.LoadScene(Enum.GetName(typeof(SCENE), scene));
     }
 
     public static void ChangeScenario(SCENARIO scenario){
