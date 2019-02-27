@@ -65,11 +65,10 @@ public class SceneBase : MonoBehaviour
             isInitialized = true;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
-            LoadPlayerData();
         }
     }
 
-    private void LoadPlayerData(){
+    public static void LoadPlayerData(){
         currentScene =  (SCENE)Enum.Parse(typeof(SCENE), PlayerPrefs.GetString(m_CurrentScene, "スタート"));
         currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), PlayerPrefs.GetString(m_CurrentScinario, "NONE"));
     }
@@ -86,7 +85,9 @@ public class SceneBase : MonoBehaviour
 
     private void OnSceneLoaded( Scene scene, LoadSceneMode mode )
     {
-        currentScene = (SCENE)Enum.Parse(typeof(SCENE), scene.name);
+        if(SceneManager.GetActiveScene().name != "スタート"){   // スタート時にプレイヤーデータを更新するのを防止
+            currentScene = (SCENE)Enum.Parse(typeof(SCENE), scene.name);
+        }
     }
 
 }

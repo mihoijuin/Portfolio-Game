@@ -7,6 +7,7 @@ public class SceneStart : SceneBase
 {
     protected override void Awake(){
         base.Awake();
+        SceneBase.LoadPlayerData();
 
         // ゲームデータがないときは「つづきから」を表示しない
         if(SceneBase.currentScinario == SCENARIO.NONE){
@@ -15,6 +16,7 @@ public class SceneStart : SceneBase
 
         // ボタンにイベントを設定
         transform.Find("Canvas/ResetButton").GetComponent<Button>().onClick.AddListener(ShowConfirmDialog);
+        transform.Find("Canvas/ContinueButton").GetComponent<Button>().onClick.AddListener(ContinueGame);
         transform.Find("Canvas/ConfirmDialog/YesButton").GetComponent<Button>().onClick.AddListener(StartGame);
     }
 
@@ -30,5 +32,9 @@ public class SceneStart : SceneBase
 
     private void StartGame(){
         SceneBase.LoadScenario(SCENE.探索, SCENARIO.Chapter1_1);
+    }
+
+    private void ContinueGame(){
+        SceneBase.LoadScenario(SceneBase.currentScene, SceneBase.currentScinario);
     }
 }
