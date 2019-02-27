@@ -34,8 +34,8 @@ public class SceneBase : MonoBehaviour
 
     private static bool isInitialized = false;
 
-    public static SCENARIO currentScinario{ get; private set; }
     public static SCENE currentScene {get; private set;}
+    public static SCENARIO currentScinario{ get; private set; }
 
     protected virtual void Awake(){
         if(!isInitialized){
@@ -44,12 +44,17 @@ public class SceneBase : MonoBehaviour
             isInitialized = true;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+            ChangeScenario(SCENARIO.NONE);   // TODOプレイヤーデータを読み込んでNONEじゃないときはそれにする
         }
     }
 
     public static void LoadScenario(string scene, string scenario){
-        currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), scenario);
+        ChangeScenario((SCENARIO)Enum.Parse(typeof(SCENARIO), scenario));
         SceneManager.LoadScene(scene);
+    }
+
+    public static void ChangeScenario(SCENARIO scenario){
+        currentScinario = scenario;
     }
 
     private void OnSceneLoaded( Scene scene, LoadSceneMode mode )
