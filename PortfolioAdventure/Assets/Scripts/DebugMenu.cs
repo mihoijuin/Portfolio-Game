@@ -64,6 +64,9 @@ public class DebugMenu : MonoBehaviour
             });
             dropIndex += 1;
         }
+
+        // ゲーム開始時は操作不可に
+        transform.Find("Scroll View/").gameObject.SetActive(false);
     }
 
     private void UpdateConfirmButton(){
