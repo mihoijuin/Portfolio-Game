@@ -23,10 +23,10 @@ public class DebugMenu : MonoBehaviour
         Type[] choiceArray = new Type[] {typeof(SceneBase.SCENE), typeof(SceneBase.SCENARIO)};   // ドロップダウンで選択するもの
         foreach(Type choice in choiceArray){
             string[] nameArray = choice.GetEnumNames();
-            Dropdown.OptionData[] m_NewDataArray = new Dropdown.OptionData[nameArray.Length-2];     // NONE, NUMを数えない
+            Dropdown.OptionData[] m_NewDataArray = new Dropdown.OptionData[nameArray.Length-1];     // NONE, NUMを数えない
             m_OptionDataListArray[Array.IndexOf(choiceArray, choice)] = new List<Dropdown.OptionData>();
             foreach(string name in  nameArray){
-                if(name != "NONE" && name != "NUM"){
+                if(name != "NUM"){
                     m_NewDataArray[Array.IndexOf(nameArray, name)] = new Dropdown.OptionData();
                     m_NewDataArray[Array.IndexOf(nameArray, name)].text = name;
                     m_OptionDataListArray[Array.IndexOf(choiceArray, choice)].Add(m_NewDataArray[Array.IndexOf(nameArray, name)]);

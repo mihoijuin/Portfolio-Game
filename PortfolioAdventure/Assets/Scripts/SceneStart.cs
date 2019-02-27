@@ -19,7 +19,7 @@ public class SceneStart : SceneBase
     }
 
     private void ShowConfirmDialog(){
-        // ゲームデータがないときはダイアログを表示せずにゲームをスタートする
+        // ゲームデータがないときはダイアログを表示せずにゲームをスタート
         if(SceneBase.currentScinario == SCENARIO.NONE){
             StartGame();
         } else

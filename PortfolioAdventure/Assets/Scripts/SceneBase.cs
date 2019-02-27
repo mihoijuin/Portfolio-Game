@@ -8,9 +8,9 @@ public class SceneBase : MonoBehaviour
 {
 
     public enum SCENE {
-        NONE = -1,
+        NONE,
 
-        スタート = 0,
+        スタート,
         探索,
         PORINのいる場所,
 
@@ -19,9 +19,9 @@ public class SceneBase : MonoBehaviour
 
     public enum SCENARIO
     {
-        NONE = -1,
+        NONE,
 
-        Chapter1_1 = 0,
+        Chapter1_1,
         Chapter1_2,
         Chapter1_3,
         Chapter1_4,
@@ -35,8 +35,28 @@ public class SceneBase : MonoBehaviour
 
     private static bool isInitialized = false;
 
-    public static SCENE currentScene {get; private set;}
-    public static SCENARIO currentScinario{ get; private set; }
+    // Playerデータキー
+    private static readonly string m_CurrentScene = "Scene";
+    private static readonly string m_CurrentScinario = "Scinario";
+    // private static readonly string m_OpendPortfolio = "Portfolio";
+
+    private static SCENE _currentScene;
+    public static SCENE currentScene {
+        get { return _currentScene; }
+        private set{
+            _currentScene = value;
+            PlayerPrefs.SetString(m_CurrentScene, Enum.GetName(typeof(SCENE), value));
+        }
+    }
+
+    private static SCENARIO _currentScinario;
+    public static SCENARIO currentScinario {
+        get { return _currentScinario; }
+        private set{
+            _currentScinario = value;
+            PlayerPrefs.SetString(m_CurrentScinario, Enum.GetName(typeof(SCENARIO), value));
+        }
+    }
 
     protected virtual void Awake(){
         if(!isInitialized){
@@ -45,9 +65,15 @@ public class SceneBase : MonoBehaviour
             isInitialized = true;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
-            ChangeScenario(SCENARIO.NONE);   // TODOプレイヤーデータを読み込んでNONEじゃないときはそれにする
+            LoadPlayerData();
         }
     }
+
+    private void LoadPlayerData(){
+        currentScene =  (SCENE)Enum.Parse(typeof(SCENE), PlayerPrefs.GetString(m_CurrentScene, "スタート"));
+        currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), PlayerPrefs.GetString(m_CurrentScinario, "NONE"));
+    }
+
 
     public static void LoadScenario(SCENE scene, SCENARIO scenario){
         ChangeScenario(scenario);
