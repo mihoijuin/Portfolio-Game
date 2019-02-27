@@ -23,6 +23,8 @@ public class SceneBase : MonoBehaviour
         Chapter1_1 = 0,
         Chapter1_2,
         Chapter1_3,
+        Chapter1_4,
+        Chapter1_5,
 
         NUM
     }
@@ -33,18 +35,26 @@ public class SceneBase : MonoBehaviour
     private static bool isInitialized = false;
 
     public static SCENARIO currentScinario{ get; private set; }
+    public static SCENE currentScene {get; private set;}
 
     protected virtual void Awake(){
         if(!isInitialized){
             GameObject debugMenu = Instantiate(debugCanvas) as GameObject;
             DontDestroyOnLoad(debugMenu);
             isInitialized = true;
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
 
     public static void LoadScenario(string scene, string scenario){
         currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), scenario);
         SceneManager.LoadScene(scene);
+    }
+
+    private void OnSceneLoaded( Scene scene, LoadSceneMode mode )
+    {
+        currentScene = (SCENE)Enum.Parse(typeof(SCENE), scene.name);
     }
 
 }
