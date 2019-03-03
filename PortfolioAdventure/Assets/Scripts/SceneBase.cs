@@ -65,6 +65,8 @@ public class SceneBase : MonoBehaviour
             isInitialized = true;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            AppUtil.InitTween();
         }
     }
 
