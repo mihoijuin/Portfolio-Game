@@ -10,4 +10,8 @@ public class SceneInvestigation : SceneBase
         Debug.Log(currentScinario);
     }
 
+    private void Start(){
+        SceneBase.ShowCurrentPlace("目覚めた場所");
+    }
+
 }

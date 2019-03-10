@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneBase : MonoBehaviour
@@ -90,6 +91,29 @@ public class SceneBase : MonoBehaviour
         if(SceneManager.GetActiveScene().name != "スタート"){   // スタート時にプレイヤーデータを更新するのを防止
             currentScene = (SCENE)Enum.Parse(typeof(SCENE), scene.name);
         }
+    }
+
+    public static void ShowCurrentPlace(string placeName){
+        RectTransform placeRect = GameObject.Find("CurrentPlace").GetComponent<RectTransform>();
+        // placeRect.gameObject.SetActive(false);
+        placeRect.GetChild(0).GetComponent<Text>().text = placeName;
+        AppUtil.DOSequence(
+            new DG.Tweening.Tween[] {
+                AppUtil.MoveRect(placeRect, "上", true, 1f, "InOutQuart"),
+                AppUtil.MoveRect(placeRect, "上", false, 0.8f, "InOutQuart", 2f)
+            },
+            0f,
+            0f
+        );
+        // 演出別パターン
+        // AppUtil.DOSequence(
+        //     new DG.Tweening.Tween[] {
+        //         AppUtil.ShowRect(placeRect, "x", 0f, 0.25f, "InOutQuart", 1f),
+        //         AppUtil.HideRect(placeRect, "x", 0.25f, "InOutQuart", 2f)
+        //     },
+        //     0f,
+        //     0f
+        // );
     }
 
 }
