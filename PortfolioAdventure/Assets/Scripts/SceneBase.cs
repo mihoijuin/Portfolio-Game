@@ -34,6 +34,9 @@ public class SceneBase : MonoBehaviour
     [SerializeField]
     GameObject debugCanvas = null;
 
+    private static RectTransform placeRect;
+    private static Vector2 placeOriginPos;
+
     private static bool isInitialized = false;
 
     // Playerデータキー
@@ -68,7 +71,10 @@ public class SceneBase : MonoBehaviour
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             AppUtil.InitTween();
+
         }
+        placeRect = GameObject.Find("CurrentPlace").GetComponent<RectTransform>();
+        placeOriginPos = placeRect.anchoredPosition;
     }
 
     public static void LoadPlayerData(){
@@ -94,9 +100,8 @@ public class SceneBase : MonoBehaviour
     }
 
     public static void ShowCurrentPlace(string placeName){
-        RectTransform placeRect = GameObject.Find("CurrentPlace").GetComponent<RectTransform>();
-        // placeRect.gameObject.SetActive(false);
         placeRect.GetChild(0).GetComponent<Text>().text = placeName;
+        placeRect.anchoredPosition = placeOriginPos;
         AppUtil.DOSequence(
             new DG.Tweening.Tween[] {
                 AppUtil.MoveRect(placeRect, "上", true, 1f, "InOutQuart"),
