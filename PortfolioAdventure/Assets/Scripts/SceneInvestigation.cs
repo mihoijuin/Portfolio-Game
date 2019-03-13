@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class SceneInvestigation : SceneBase
 {
-    public static string currentPlace = "目覚めた場所";
-
     protected override void Awake(){
         base.Awake();
-        Debug.Log(currentScinario);
+        Debug.Log(SceneBase.currentScinario);
     }
 
     private void Start(){
-        SceneBase.ShowCurrentPlace(currentPlace);
+        SceneBase.ShowCurrentPlace("目覚めた場所");
     }
 
 }

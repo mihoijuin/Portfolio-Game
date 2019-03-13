@@ -39,47 +39,33 @@ public class SceneBase : MonoBehaviour
 
     private static bool isInitialized = false;
 
-    // Playerデータキー
-    private static readonly string m_CurrentScene = "Scene";
-    private static readonly string m_CurrentScinario = "Scinario";
-    // private static readonly string m_OpendPortfolio = "Portfolio";
+    public static string currentPlace;
 
-    private static SCENE _currentScene;
+    // プレイヤーステータス
     public static SCENE currentScene {
-        get { return _currentScene; }
-        private set{
-            _currentScene = value;
-            PlayerPrefs.SetString(m_CurrentScene, Enum.GetName(typeof(SCENE), value));
-        }
+        get { return (SCENE)Enum.Parse(typeof(SCENE), PlayerPrefs.GetString("Scene", "NONE")); }
+        private set { PlayerPrefs.SetString("Scene", Enum.GetName(typeof(SCENE), value)); }
     }
 
-    private static SCENARIO _currentScinario;
     public static SCENARIO currentScinario {
-        get { return _currentScinario; }
-        private set{
-            _currentScinario = value;
-            PlayerPrefs.SetString(m_CurrentScinario, Enum.GetName(typeof(SCENARIO), value));
-        }
+        get { return (SCENARIO)Enum.Parse(typeof(SCENARIO), PlayerPrefs.GetString("Scinario", "NONE")); }
+        private set { PlayerPrefs.SetString("Scinario", Enum.GetName(typeof(SCENARIO), value)); }
     }
 
     protected virtual void Awake(){
         if(!isInitialized){
             GameObject debugMenu = Instantiate(debugCanvas) as GameObject;
             DontDestroyOnLoad(debugMenu);
-            isInitialized = true;
-
             SceneManager.sceneLoaded += OnSceneLoaded;
-
             AppUtil.InitTween();
 
+            isInitialized = true;
         }
-        placeRect = GameObject.Find("CurrentPlace").GetComponent<RectTransform>();
-        placeOriginPos = placeRect.anchoredPosition;
-    }
 
-    public static void LoadPlayerData(){
-        currentScene =  (SCENE)Enum.Parse(typeof(SCENE), PlayerPrefs.GetString(m_CurrentScene, "スタート"));
-        currentScinario = (SCENARIO)Enum.Parse(typeof(SCENARIO), PlayerPrefs.GetString(m_CurrentScinario, "NONE"));
+        if(SceneManager.GetActiveScene().name != "スタート"){
+            placeRect = GameObject.Find("CurrentPlace").GetComponent<RectTransform>();
+            placeOriginPos = placeRect.anchoredPosition;
+        }
     }
 
 
@@ -110,6 +96,7 @@ public class SceneBase : MonoBehaviour
             0f,
             0f
         );
+        currentPlace = placeName;
         // 演出別パターン
         // AppUtil.DOSequence(
         //     new DG.Tweening.Tween[] {

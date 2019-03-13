@@ -7,8 +7,6 @@ public class SceneStart : SceneBase
 {
     protected override void Awake(){
         base.Awake();
-        SceneBase.LoadPlayerData();
-
         // ゲームデータがないときは「つづきから」を表示しない
         if(SceneBase.currentScinario == SCENARIO.NONE){
             GameObject.Find("ContinueButton").SetActive(false);
